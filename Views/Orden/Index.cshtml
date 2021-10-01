@@ -1,0 +1,76 @@
+@model IEnumerable<Turnos.Models.Orden>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create" class="btn-floating btn-large green darken-1"><i class="material-icons">person_add</i></a>
+</p>
+
+ 
+
+<table class="responsive-table highlight z-depth-3 blue lighten-5">
+    <thead class="blue darken-1 white-text">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaIngreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroOrden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.DNI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Practica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Practica.Codigo)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroOrden)
+            </td>
+           <td>
+               @Html.DisplayFor(modelItem => item.Paciente.Nombre),@Html.DisplayFor(modelItem => item.Paciente.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paciente.DNI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Practica.NombrePractica)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Practica.Codigo)
+            </td>
+           
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdOrden"><i class="material-icons">edit</i></a> 
+                  <a asp-action="Details" asp-route-id="@item.IdOrden">Detalle</a> 
+                <a asp-action="Delete" asp-route-id="@item.IdOrden"><i class="material-icons red-text">delete</i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
+
+

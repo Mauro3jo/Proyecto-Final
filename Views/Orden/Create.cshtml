@@ -1,0 +1,106 @@
+@model Turnos.Models.Orden
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name=viewport content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h5>Orden</h5>
+<hr />
+<div class=row>
+    <div >
+        <form class="col s12" asp-action=Create>
+            <div asp-validation-summary=ModelOnly ></div>
+           
+               <div class="row">
+                   
+                   <div class="input-field col s12" >
+                <i class="material-icons prefix">star_rate</i>
+                <select name=IdPaciente asp-items=ViewBag.IdPaciente></select>
+            </div>
+
+                  <div class="input-field col s6">
+             <i class="material-icons prefix">account_circle</i>
+             
+             <select name=Nombre asp-items=ViewBag.Nombre></select>
+             <label asp-for="Paciente.Nombre"></label>
+             <span asp-validation-for=Paciente.Nombre ></span>
+             </div>
+
+             <div class="input-field col s6">
+           <input asp-for="Paciente.Apellido"  type="Text" class="validate">
+             <label asp-for="Paciente.Apellido" ></label>
+            <span asp-validation-for=Paciente.Apellido ></span>
+             </div>
+
+             <div class="input-field col s12">
+             <i class="material-icons prefix">assignment_ind</i>
+             <select name=DNI asp-items=ViewBag.DNI></select>
+             <label asp-for="Paciente.DNI" ></label>
+             <span asp-validation-for=Paciente.DNI ></span>
+             </div>
+
+              <div class="input-field col s12">
+             <i class="material-icons prefix">assignment_ind</i>
+             <input asp-for="NumeroOrden"  type="tel" class="validate">
+             <label asp-for="NumeroOrden" ></label>
+             <span asp-validation-for=NumeroOrden ></span>
+
+            <div class="input-field col s12">
+             <i class="material-icons prefix">event_note</i>
+                <label asp-for=FechaIngreso ></label>
+                 <input asp-for=FechaIngreso id="fecha" type="Text" class="datepicker" value="fecha" />
+                 <script>
+             const letrero = document.querySelector("#fecha")
+
+                 const fecha = new Date();            
+             let anio = fecha.getFullYear()
+             let mes = fecha.getMonth()+1
+            let dia = fecha.getDate()
+            let hora = fecha.getHours()
+            let min = fecha.getMinutes()
+            let sec = fecha.getSeconds()
+
+
+             if(dia < 10){
+              dia='0'+dia
+                 }
+                if(mes < 10){
+                   mes='0'+mes
+              }
+                    letrero.value = `${dia} / ${mes} / ${anio}  ${hora}:${min}:${sec}`
+  
+                 </script>
+                <span asp-validation-for=FechaIngreso ></span>
+            </div >
+
+           
+
+           <div class="input-field col s12" >
+                <i class="material-icons prefix">star_rate</i>
+                <select name=IdPractica asp-items=ViewBag.IdPractica></select>
+            </div>
+
+            <div class="row">
+            <div class="col s6 m6">
+                  <button class="btn waves-effect waves-light cyan accent-4" type="submit" name="action">Grabar
+                 <i class="material-icons right">send</i>
+                </button>
+            </div>
+            <div class="col s6 m6">
+                <a class="waves-effect waves-light btn grey darken-4" asp-action="index"><i class="material-icons left">undo</i>Volver</a>
+                 
+          </div>
+          </div>
+        </form>
+    </div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+@model Turnos.Models.Practica
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Eliminar</title>
+</head>
+<body>
+
+<h4>Seguro Desea eliminar la siguiente Practica?</h4>
+<div>
+    <h5>Practica</h5>
+    <hr />
+    <div class="row">
+    <div class="col s12 m6">
+      <div class="card hoverable orange">
+        <div class="card-content white-text">
+          <span class="card-title"><h5><b> @Html.DisplayFor(model => model.NombrePractica)</b></h5></span>
+          <p><dl class="row">
+       
+        
+       </dl></p>
+        </div>
+        <div class="card-action blue-grey darken-2">
+       <form asp-action="Delete">
+        <input type="hidden" asp-for="IdPractica">
+        <Input type="submit" value="Eliminar" class="waves-effect waves-light btn-smal orange lighten-2"></Input>
+        <a asp-action="Index"  class="right">Volver</a>
+       </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    
+   
+</div>
+</body>
+</html>

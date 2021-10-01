@@ -1,0 +1,82 @@
+﻿@using Microsoft.AspNetCore.Http;
+@{
+if(Context.Session.GetString("usuario")== null){
+  Context.Response.Redirect("/Login");
+}
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - turnos</title>
+    <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="~/css/materialize.min.css"  media="screen,projection"/>
+</head>
+<body>
+    <header>
+      <nav>
+    <div class="nav-wrapper grey darken-4">
+      <a href="#!" class="brand-logo center">PROYECTO FINAL</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a asp-controller="home" asp-action="Index">Inicio</a></li>
+      
+        <li><a asp-controller="Paciente" asp-action="Index">Paciente</a></li>
+        <li><a asp-controller="Practica" asp-action="Index">Practica</a></li>
+        <li><a asp-controller="Orden" asp-action="Index">Orden</a></li>
+        <li><a asp-controller="OrdenDeTrabajo" asp-action="Index">OrdenDeTrabajo</a></li>
+        <li><a asp-controller="AnalisisFinal" asp-action="Index">AnalisisFinal</a></li>
+      
+        <li><a asp-controller="Login" asp-action="Logout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+   <li><a asp-controller="home" asp-action="Index">Inicio</a></li>
+        
+        <li><a asp-controller="Paciente" asp-action="Index">Paciente</a></li>
+        <li><a asp-controller="Practica" asp-action="Index">Practica</a></li>
+        <li><a asp-controller="Orden" asp-action="Index">Orden</a></li>
+        <li><a asp-controller="OrdenDeTrabajo" asp-action="Index">OrdenDeTrabajo</a></li>
+        <li><a asp-controller="AnalisisFinal" asp-action="Index">AnalisisFinal</a></li>
+         <li><a asp-controller="Login" asp-action="Logout">Logout</a></li>
+  </ul>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - PROYECTO FINAL - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="~/js/materialize.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+            $('.timepicker').timepicker();
+            $('.datepicker').datepicker();
+            $('select').formSelect();
+            $('input.autocomplete').autocomplete({
+               data: {
+                 "Apple": null,
+               "Microsoft": null,
+                   "Google": 'https://placehold.it/250x250'
+                    },
+                   });
+        })
+    </script>
+</body>
+</html>

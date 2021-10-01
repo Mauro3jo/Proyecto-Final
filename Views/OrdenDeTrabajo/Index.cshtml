@@ -1,0 +1,74 @@
+@model IEnumerable<Turnos.Models.OrdenDeTrabajo>
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Orden.Paciente)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Orden.Paciente.DNI)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Orden.Practica.NombrePractica)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Orden.Practica.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValoresDePractica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orden)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr> 
+            <td>
+                @Html.DisplayFor(modelItem => item.Orden.Paciente.Apellido),@Html.DisplayFor(modelItem => item.Orden.Paciente.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orden.Paciente.DNI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orden.Practica.NombrePractica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orden.Practica.Codigo)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.ValoresDePractica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orden.NumeroOrden)
+            </td>
+           
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdOrdenDeTrabajo">Edit</a> 
+                 <a asp-action="Details" asp-route-id="@item.IdOrdenDeTrabajo">Edit</a> 
+                <a asp-action="Delete" asp-route-id="@item.IdOrdenDeTrabajo">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

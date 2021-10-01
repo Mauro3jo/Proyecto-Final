@@ -1,0 +1,53 @@
+@model Turnos.Models.Orden
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h5>Paciente</h5>
+    <hr />
+    <div class="row">
+    <div class="col s12 m6">
+      <div class="card hoverable green accent-4">
+        <div class="card-content white-text">
+          <span class="card-title"><h5><b> @Html.DisplayFor(model => model.Paciente.Nombre),@Html.DisplayFor(model => model.Paciente.Apellido)</b></h5></span>
+          <p><dl class="row">
+       <hr>
+        <dt >
+          <h6>@Html.DisplayNameFor(model => model.Paciente.DNI): @Html.DisplayFor(model => model.Paciente.DNI)</h6>  
+        </dt>
+      <hr>
+      <hr>
+        <dt >
+          <h6>@Html.DisplayNameFor(model => model.NumeroOrden): @Html.DisplayFor(model => model.NumeroOrden)</h6>  
+        </dt>
+      <hr>
+        <dt >
+          <h6>@Html.DisplayNameFor(model => model.Practica.NombrePractica): @Html.DisplayFor(model => model.Practica.NombrePractica)</h6>
+        </dt>
+       <hr>
+      
+       
+        
+        
+    </dl></p>
+        </div>
+        <div class="card-action blue-grey darken-2">
+         <form asp-action="Edit">
+        <input type="hidden" asp-for="IdPaciente" />
+        <li><a asp-controller="Orden" asp-action="Create" asp-route-id="@Model.IdPaciente">Orden</a></li>
+       <a asp-action="Edit" asp-route-id="@Model.IdPaciente">Editar</a>
+        <a asp-action="Index">Volver</a>
+       </form>
+        </div>
+      </div>
+    </div>
+</div>
+</body>
+</html>

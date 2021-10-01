@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name=viewport content="width=device-width" />
+    <title>Editar</title>
+</head>
+<body>
+
+<h5>Orden</h5>
+<hr />
+<div class=row>
+    <div >
+        <form class="col s12" asp-action=Edit>
+            <div asp-validation-summary=ModelOnly ></div>
+           
+               <div class="row">
+                   
+          
+
+           
+
+           <div class="input-field col s12" >
+                <i class="material-icons prefix">star_rate</i>
+                <select name=IdPractica asp-items=ViewBag.IdPractica></select>
+            </div>
+
+            <div class="row">
+            <div class="col s6 m6">
+                  <button class="btn waves-effect waves-light cyan accent-4" type="submit" name="action">Grabar
+                 <i class="material-icons right">send</i>
+                </button>
+            </div>
+            <div class="col s6 m6">
+                <a class="waves-effect waves-light btn grey darken-4" asp-action="index"><i class="material-icons left">undo</i>Volver</a>
+                 
+          </div>
+          </div>
+        </form>
+    </div>
+</div>
+
+
+
+</body>
+</html>
