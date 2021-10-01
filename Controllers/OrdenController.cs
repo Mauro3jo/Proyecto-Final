@@ -18,7 +18,7 @@ namespace Turnos.Controllers
             _context = context;
         }
 
-        // GET: Orden
+    
         public async Task<IActionResult> Index()
         {
             var turnosContext = _context.Orden.Include(o => o.Paciente).Include(o => o.Practica);
@@ -47,7 +47,7 @@ namespace Turnos.Controllers
               return Json(Pacientes);
           }
 
-        // GET: Orden/Details/5
+       
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -67,20 +67,18 @@ namespace Turnos.Controllers
             return View(orden);
         }
 
-        // GET: Orden/Create
+      
         public IActionResult Create()
         {
-            //ViewData["IdPaciente"] = new SelectList(_context.Paciente, "IdPaciente", "FechaNac");
-          //  ViewData["DNI"] = new SelectList(_context.Paciente, "IdPaciente", "DNI");
-          //  ViewData["Apellido"] = new SelectList(_context.Paciente, "IdPaciente", "Apellido");
-//ViewData["Nombre"] = new SelectList(_context.Paciente, "IdPaciente", "Nombre");
-           // ViewData["IdPractica"] = new SelectList(_context.Practica, "IdPractica", "NombrePractica");
+            ViewData["IdPaciente"] = new SelectList(_context.Paciente, "IdPaciente", "FechaNac");
+            ViewData["DNI"] = new SelectList(_context.Paciente, "IdPaciente", "DNI");
+            ViewData["Apellido"] = new SelectList(_context.Paciente, "IdPaciente", "Apellido");
+            ViewData["Nombre"] = new SelectList(_context.Paciente, "IdPaciente", "Nombre");
+            ViewData["IdPractica"] = new SelectList(_context.Practica, "IdPractica", "NombrePractica");
             return View();
         }
 
-        // POST: Orden/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdOrden,NumeroOrden,FechaIngreso,IdPaciente,IdPractica")] Orden orden)
@@ -91,15 +89,15 @@ namespace Turnos.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-           // ViewData["IdPaciente"] = new SelectList(_context.Paciente, "IdPaciente", "FechaNac", orden.IdPaciente);
-           // ViewData["DNI"] = new SelectList(_context.Paciente, "IdPaciente", "DNI", orden.IdPaciente);
-           //  ViewData["Apellido"] = new SelectList(_context.Paciente, "IdPaciente", "Apellido", orden.IdPaciente);
-           //  ViewData["Nombre"] = new SelectList(_context.Paciente, "IdPaciente", "Nombre", orden.IdPaciente);
-         //   ViewData["IdPractica"] = new SelectList(_context.Practica, "IdPractica", "NombrePractica", orden.IdPractica);
+            ViewData["IdPaciente"] = new SelectList(_context.Paciente, "IdPaciente", "FechaNac", orden.IdPaciente);
+            ViewData["DNI"] = new SelectList(_context.Paciente, "IdPaciente", "DNI", orden.IdPaciente);
+             ViewData["Apellido"] = new SelectList(_context.Paciente, "IdPaciente", "Apellido", orden.IdPaciente);
+             ViewData["Nombre"] = new SelectList(_context.Paciente, "IdPaciente", "Nombre", orden.IdPaciente);
+           ViewData["IdPractica"] = new SelectList(_context.Practica, "IdPractica", "NombrePractica", orden.IdPractica);
             return View(orden);
         }
 
-        // GET: Orden/Edit/5
+      
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -117,9 +115,7 @@ namespace Turnos.Controllers
             return View(orden);
         }
 
-        // POST: Orden/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+   
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdOrden,NumeroOrden,FechaIngreso,IdPaciente,IdPractica")] Orden orden)
@@ -154,7 +150,6 @@ namespace Turnos.Controllers
             return View(orden);
         }
 
-        // GET: Orden/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -174,7 +169,6 @@ namespace Turnos.Controllers
             return View(orden);
         }
 
-        // POST: Orden/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
